@@ -33,7 +33,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<RpcRequest> 
             // 进行注册
             Object service = serviceRegistry.getService(interfaceName);
             Object result = requestHandler.handle(rpcRequest, service);
-            ChannelFuture channelFuture = ctx.writeAndFlush(RpcResponse.success(result));
+            ChannelFuture channelFuture = ctx.writeAndFlush(RpcResponse.success(result,rpcRequest.getRequestId()));
             logger.info("发送RpcResponse");
             // 监听 如果所有数据包发送完 关闭通道
             channelFuture.addListener(ChannelFutureListener.CLOSE);
