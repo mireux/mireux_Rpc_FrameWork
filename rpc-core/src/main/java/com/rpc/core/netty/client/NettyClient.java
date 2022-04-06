@@ -3,10 +3,13 @@ package com.rpc.core.netty.client;
 import com.rpc.core.RpcClient;
 import com.rpc.core.codec.CommonDecoder;
 import com.rpc.core.codec.CommonEncoder;
+import com.rpc.core.serializer.CommonSerializer;
 import com.rpc.core.serializer.JsonSerializer;
 import com.rpc.core.serializer.KryoSerializer;
 import com.rpc.entity.RpcRequest;
 import com.rpc.entity.RpcResponse;
+import com.rpc.enumeration.RpcError;
+import com.rpc.exception.RpcException;
 import com.rpc.utils.RpcMessageChecker;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
@@ -17,14 +20,16 @@ import io.netty.util.AttributeKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.InetSocketAddress;
+import java.util.concurrent.atomic.AtomicReference;
+
 public class NettyClient implements RpcClient {
 
 
     private static final Logger logger = LoggerFactory.getLogger(NettyClient.class);
-
+    private CommonSerializer serializer;
     private final String host;
     private final int port;
-    private static final Bootstrap bootstrap;
 
 
     public NettyClient(String host, int port) {
@@ -32,30 +37,18 @@ public class NettyClient implements RpcClient {
         this.port = port;
     }
 
-    static {
-        EventLoopGroup group = new NioEventLoopGroup();
-        bootstrap = new Bootstrap();
-        bootstrap.group(group)
-                .channel(NioSocketChannel.class)
-                .option(ChannelOption.SO_KEEPALIVE, true)
-                .handler(new ChannelInitializer<SocketChannel>() {
-                    @Override
-                    protected void initChannel(SocketChannel ch) throws Exception {
-                        ch.pipeline()
-                                .addLast(new CommonDecoder())
-                                .addLast(new NettyClientHandler())
-                                .addLast(new CommonEncoder(new JsonSerializer()));
-                    }
-                });
-    }
-
     @Override
     public Object sendRequest(RpcRequest rpcRequest) {
+        if (serializer == null) {
+            logger.error("未设置序列化器");
+            throw new RpcException(RpcError.SERIALIZER_NOT_FOUND);
+        }
+        //保证自定义实体类变量的原子性和共享性的线程安全，此处应用于rpcResponse
+        AtomicReference<Object> result = new AtomicReference<>(null);
         try {
-            ChannelFuture future = bootstrap.connect(host, port).sync();
+            Channel channel = ChannelProvider.get(new InetSocketAddress(host, port), serializer);
             logger.info("客户端连接到服务端{}：{}", host, port);
-            Channel channel = future.channel();
-            if(channel != null){
+            if(channel.isActive()){
                 //向服务端发请求，并设置监听，关于writeAndFlush()的具体实现可以参考：https://blog.csdn.net/qq_34436819/article/details/103937188
                 channel.writeAndFlush(rpcRequest).addListener(future1 -> {
                     if(future1.isSuccess()){
@@ -76,5 +69,9 @@ public class NettyClient implements RpcClient {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void setSerializer(CommonSerializer serializer) {
+        this.serializer = serializer;
     }
 }
