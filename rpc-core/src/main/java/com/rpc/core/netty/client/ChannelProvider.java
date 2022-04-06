@@ -21,13 +21,12 @@ import java.util.concurrent.TimeUnit;
 public class ChannelProvider {
 
     private static final Logger logger = LoggerFactory.getLogger(ChannelProvider.class);
-    private static EventLoopGroup eventLoopGroup;
-    private static Bootstrap bootstrap = initializeBootstrap();
+    private static final Bootstrap bootstrap = initializeBootstrap();
     private static final int MAX_RETRY_COUNT = 5;
     private static Channel channel = null;
 
     private static Bootstrap initializeBootstrap() {
-        eventLoopGroup = new NioEventLoopGroup();
+        EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(eventLoopGroup)
                 .channel(NioSocketChannel.class)
