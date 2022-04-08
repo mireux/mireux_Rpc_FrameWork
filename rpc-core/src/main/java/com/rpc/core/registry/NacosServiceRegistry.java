@@ -28,14 +28,11 @@ public class NacosServiceRegistry implements ServiceRegistry{
         }
     }
 
-    @Override
-    public <T> void register(T service) {
-
-    }
 
     @Override
-    public <T> void register(String serviceName, InetSocketAddress inetSocketAddress) {
+    public  void register(String serviceName, InetSocketAddress inetSocketAddress) {
         try {
+            logger.info("register:{}",serviceName);
             namingService.registerInstance(serviceName,inetSocketAddress.getHostName(),inetSocketAddress.getPort());
         } catch (NacosException e) {
             logger.error("注册服务时有错误发生" + e);

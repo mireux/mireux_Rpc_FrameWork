@@ -57,7 +57,7 @@ public class NettyServer implements RpcServer {
             throw new RpcException(RpcError.SERIALIZER_NOT_FOUND);
         }
         serviceProvider.addServiceProvider(service);
-        serviceRegistry.register(service.getClass().getCanonicalName(),new InetSocketAddress(host,port));
+        serviceRegistry.register(serviceClass.getCanonicalName(),new InetSocketAddress(host,port));
         start(port);
     }
 

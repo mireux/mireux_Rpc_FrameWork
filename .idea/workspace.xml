@@ -4,8 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08b26fde-351f-40ae-a07f-91aa4ed31ce4" name="变更" comment="">
+    <list default="true" id="08b26fde-351f-40ae-a07f-91aa4ed31ce4" name="变更" comment="commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/entity/RpcResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/entity/RpcResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-common/target/classes/com/rpc/entity/RpcResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-common/target/classes/com/rpc/entity/RpcResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/RequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/client/NettyClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/client/NettyClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/client/NettyClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/client/NettyClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/server/NettyServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/server/NettyServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/server/NettyServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/server/NettyServerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/registry/NacosServiceRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/registry/NacosServiceRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/registry/ServiceRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/registry/ServiceRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/RequestHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/RequestHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/client/NettyClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/client/NettyClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/client/NettyClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/client/NettyClientHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/server/NettyServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/server/NettyServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/registry/NacosServiceRegistry.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/registry/NacosServiceRegistry.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/registry/ServiceRegistry.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/registry/ServiceRegistry.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/target/classes/com/rpc/client/RpcClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/target/classes/com/rpc/client/TestNettyClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/target/classes/com/rpc/client/TestNettyClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-server/src/main/java/com/rpc/test/TestNettyServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/src/main/java/com/rpc/test/TestNettyServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-server/target/classes/com/rpc/test/TestNettyServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/target/classes/com/rpc/test/TestNettyServer.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +72,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="项目" />
+    <property name="project.structure.last.edited" value="问题" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -64,7 +83,7 @@
       <recent name="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.TestNettyServer">
+  <component name="RunManager" selected="应用程序.TestNettyClient">
     <configuration name="TestClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rpc.client.TestClient" />
       <module name="test-client" />
@@ -119,8 +138,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.TestNettyServer" />
         <item itemvalue="应用程序.TestNettyClient" />
+        <item itemvalue="应用程序.TestNettyServer" />
         <item itemvalue="应用程序.TestClient" />
         <item itemvalue="应用程序.TestServer" />
       </list>
@@ -207,5 +226,36 @@
     <MESSAGE value="添加readme.md" />
     <MESSAGE value="加入Nacos服务注册中心" />
     <option name="LAST_COMMIT_MESSAGE" value="加入Nacos服务注册中心" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/client/NettyClient.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test-server/src/main/java/com/rpc/test/TestNettyServer.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/test-client/src/main/java/com/rpc/client/TestNettyClient.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/RpcClientProxy.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/entity/RpcResponse.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

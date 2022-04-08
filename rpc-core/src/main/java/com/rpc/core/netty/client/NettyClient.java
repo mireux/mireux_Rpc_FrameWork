@@ -1,23 +1,15 @@
 package com.rpc.core.netty.client;
 
 import com.rpc.core.RpcClient;
-import com.rpc.core.codec.CommonDecoder;
-import com.rpc.core.codec.CommonEncoder;
 import com.rpc.core.registry.NacosServiceRegistry;
 import com.rpc.core.registry.ServiceRegistry;
 import com.rpc.core.serializer.CommonSerializer;
-import com.rpc.core.serializer.JsonSerializer;
-import com.rpc.core.serializer.KryoSerializer;
 import com.rpc.entity.RpcRequest;
 import com.rpc.entity.RpcResponse;
 import com.rpc.enumeration.RpcError;
 import com.rpc.exception.RpcException;
 import com.rpc.utils.RpcMessageChecker;
-import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.*;
-import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.SocketChannel;
-import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.channel.Channel;
 import io.netty.util.AttributeKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,12 +54,12 @@ public class NettyClient implements RpcClient {
                 //get()阻塞获取value
                 RpcResponse rpcResponse = channel.attr(key).get();
                 RpcMessageChecker.check(rpcRequest, rpcResponse);
-                return rpcResponse.getData();
+                 result.set(rpcResponse.getData());
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return null;
+        return result.get();
     }
 
     public void setSerializer(CommonSerializer serializer) {
