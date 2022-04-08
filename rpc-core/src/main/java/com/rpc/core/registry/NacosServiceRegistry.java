@@ -16,12 +16,12 @@ public class NacosServiceRegistry implements ServiceRegistry{
 
     private static final Logger logger = LoggerFactory.getLogger(NacosServiceRegistry.class);
 
-    private static final String SERVER_ADDR = "127.0.0.1:8848";
+    private static final String SERVER_ADDRESS = "127.0.0.1:8848";
     private static final NamingService namingService;
     static {
         try {
             //连接Nacos创建命名服务
-            namingService = NamingFactory.createNamingService(SERVER_ADDR);
+            namingService = NamingFactory.createNamingService(SERVER_ADDRESS);
         }catch (NacosException e){
             logger.error("连接Nacos时有错误发生：" + e);
             throw new RpcException(RpcError.FAILED_TO_CONNECT_TO_SERVICE_REGISTRY);
@@ -44,9 +44,10 @@ public class NacosServiceRegistry implements ServiceRegistry{
     }
 
     @Override
-    public Object getService(String serviceName) {
+    public InetSocketAddress getService(String serviceName) {
         try {
             List<Instance> AllService = namingService.getAllInstances(serviceName);
+            //TODO 这里涉及到负载均衡策略，后面再优化，这里我们先选择第0个
             Instance instance = AllService.get(0);
             return new InetSocketAddress(instance.getIp(), instance.getPort());
         } catch (NacosException e) {

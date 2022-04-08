@@ -3,6 +3,8 @@ package com.rpc.core.netty.client;
 import com.rpc.core.RpcClient;
 import com.rpc.core.codec.CommonDecoder;
 import com.rpc.core.codec.CommonEncoder;
+import com.rpc.core.registry.NacosServiceRegistry;
+import com.rpc.core.registry.ServiceRegistry;
 import com.rpc.core.serializer.CommonSerializer;
 import com.rpc.core.serializer.JsonSerializer;
 import com.rpc.core.serializer.KryoSerializer;
@@ -28,13 +30,10 @@ public class NettyClient implements RpcClient {
 
     private static final Logger logger = LoggerFactory.getLogger(NettyClient.class);
     private CommonSerializer serializer;
-    private final String host;
-    private final int port;
+    private final ServiceRegistry serviceRegistry;
 
-
-    public NettyClient(String host, int port) {
-        this.host = host;
-        this.port = port;
+    public NettyClient() {
+        serviceRegistry = new NacosServiceRegistry();
     }
 
     @Override
@@ -46,13 +45,13 @@ public class NettyClient implements RpcClient {
         //保证自定义实体类变量的原子性和共享性的线程安全，此处应用于rpcResponse
         AtomicReference<Object> result = new AtomicReference<>(null);
         try {
-            Channel channel = ChannelProvider.get(new InetSocketAddress(host, port), serializer);
-            logger.info("客户端连接到服务端{}：{}", host, port);
+            InetSocketAddress inetSocketAddress = serviceRegistry.getService(rpcRequest.getInterfaceName());
+            Channel channel = ChannelProvider.get(inetSocketAddress, serializer);
             if(channel.isActive()){
                 //向服务端发请求，并设置监听，关于writeAndFlush()的具体实现可以参考：https://blog.csdn.net/qq_34436819/article/details/103937188
                 channel.writeAndFlush(rpcRequest).addListener(future1 -> {
                     if(future1.isSuccess()){
-                        logger.info(String.format("客户端发送消息：%s", rpcRequest.toString()));
+                        logger.info(String.format("客户端发送消息：%s", rpcRequest));
                     }else {
                         logger.error("发送消息时有错误发生:", future1.cause());
                     }

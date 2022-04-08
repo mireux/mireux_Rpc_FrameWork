@@ -21,5 +21,5 @@ public interface ServiceRegistry {
      * @param serviceName 服务名称
      * @return 服务实体
      */
-    Object getService(String serviceName);
+    InetSocketAddress getService(String serviceName);
 }

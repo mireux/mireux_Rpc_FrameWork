@@ -18,7 +18,7 @@ public class RpcRequest implements Serializable {
     // 接口名
     private String interfaceName;
 
-    // 调用方法明
+    // 调用方法名
     private String methodName;
 
     // 待调用的参数
