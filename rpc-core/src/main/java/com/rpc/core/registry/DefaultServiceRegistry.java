@@ -5,6 +5,7 @@ import com.rpc.exception.RpcException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.InetSocketAddress;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -46,6 +47,11 @@ public class DefaultServiceRegistry implements ServiceRegistry{
             serviceMap.put(inter.getCanonicalName(),service);
         }
         logger.info("向接口：{} 注册服务：{}", interfaces, serviceName);
+    }
+
+    @Override
+    public <T> void register(String serviceName, InetSocketAddress inetSocketAddress) {
+
     }
 
     @Override
