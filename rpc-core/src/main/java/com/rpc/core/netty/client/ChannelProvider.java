@@ -1,7 +1,7 @@
 package com.rpc.core.netty.client;
 
-import com.rpc.core.codec.CommonDecoder;
-import com.rpc.core.codec.CommonEncoder;
+import com.rpc.core.netty.codec.CommonDecoder;
+import com.rpc.core.netty.codec.CommonEncoder;
 import com.rpc.core.serializer.CommonSerializer;
 import com.rpc.enumeration.RpcError;
 import com.rpc.exception.RpcException;

@@ -1,8 +1,7 @@
 package com.rpc.core.netty.client;
 
 import com.rpc.core.RpcClient;
-import com.rpc.core.registry.NacosServiceRegistry;
-import com.rpc.core.registry.ServiceRegistry;
+import com.rpc.core.registry.NacosService;
 import com.rpc.core.serializer.CommonSerializer;
 import com.rpc.entity.RpcRequest;
 import com.rpc.entity.RpcResponse;
@@ -22,10 +21,10 @@ public class NettyClient implements RpcClient {
 
     private static final Logger logger = LoggerFactory.getLogger(NettyClient.class);
     private CommonSerializer serializer;
-    private final ServiceRegistry serviceRegistry;
+    private final NacosService nacosService;
 
     public NettyClient() {
-        serviceRegistry = new NacosServiceRegistry();
+        nacosService = new NacosService();
     }
 
     @Override
@@ -37,7 +36,7 @@ public class NettyClient implements RpcClient {
         //保证自定义实体类变量的原子性和共享性的线程安全，此处应用于rpcResponse
         AtomicReference<Object> result = new AtomicReference<>(null);
         try {
-            InetSocketAddress inetSocketAddress = serviceRegistry.getService(rpcRequest.getInterfaceName());
+            InetSocketAddress inetSocketAddress = nacosService.getService(rpcRequest.getInterfaceName());
             Channel channel = ChannelProvider.get(inetSocketAddress, serializer);
             if(channel.isActive()){
                 //向服务端发请求，并设置监听，关于writeAndFlush()的具体实现可以参考：https://blog.csdn.net/qq_34436819/article/details/103937188

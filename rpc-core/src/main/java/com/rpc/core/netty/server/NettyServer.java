@@ -1,15 +1,14 @@
 package com.rpc.core.netty.server;
 
 import com.rpc.core.RpcServer;
-import com.rpc.core.codec.CommonDecoder;
-import com.rpc.core.codec.CommonEncoder;
-import com.rpc.core.netty.provider.ServiceProvider;
-import com.rpc.core.netty.provider.ServiceProviderImpl;
-import com.rpc.core.registry.NacosServiceRegistry;
+import com.rpc.core.netty.codec.CommonDecoder;
+import com.rpc.core.netty.codec.CommonEncoder;
+import com.rpc.core.provider.ServiceProvider;
+import com.rpc.core.provider.ServiceProviderImpl;
+import com.rpc.core.registry.NacosService;
 import com.rpc.core.registry.ServiceRegistry;
 import com.rpc.core.serializer.CommonSerializer;
 import com.rpc.core.serializer.JsonSerializer;
-import com.rpc.core.serializer.KryoSerializer;
 import com.rpc.enumeration.RpcError;
 import com.rpc.exception.RpcException;
 import io.netty.bootstrap.ServerBootstrap;
@@ -39,7 +38,7 @@ public class NettyServer implements RpcServer {
     public NettyServer(String host, int port) {
         this.host = host;
         this.port = port;
-        serviceRegistry = new NacosServiceRegistry();
+        serviceRegistry = new NacosService();
         serviceProvider = new ServiceProviderImpl();
     }
 
@@ -51,12 +50,12 @@ public class NettyServer implements RpcServer {
      * @param <T>
      */
     @Override
-    public <T> void publishService(Object service, Class<T> serviceClass) {
+    public <T> void publishService(T service, Class<T> serviceClass) {
         if(serializer == null) {
             logger.error("未设置序列化器");
             throw new RpcException(RpcError.SERIALIZER_NOT_FOUND);
         }
-        serviceProvider.addServiceProvider(service);
+        serviceProvider.addServiceProvider(service,serviceClass);
         serviceRegistry.register(serviceClass.getCanonicalName(),new InetSocketAddress(host,port));
         start(port);
     }

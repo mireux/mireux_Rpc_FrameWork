@@ -1,7 +1,7 @@
 package com.rpc.core;
 
-import com.rpc.core.netty.provider.ServiceProvider;
-import com.rpc.core.netty.provider.ServiceProviderImpl;
+import com.rpc.core.provider.ServiceProvider;
+import com.rpc.core.provider.ServiceProviderImpl;
 import com.rpc.entity.RpcRequest;
 import com.rpc.entity.RpcResponse;
 import com.rpc.enumeration.ResponseCode;

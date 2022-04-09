@@ -1,4 +1,4 @@
-package com.rpc.core.codec;
+package com.rpc.core.netty.codec;
 
 import com.rpc.core.serializer.CommonSerializer;
 import com.rpc.entity.RpcRequest;
@@ -8,7 +8,6 @@ import com.rpc.enumeration.RpcError;
 import com.rpc.exception.RpcException;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
 import io.netty.handler.codec.ReplayingDecoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

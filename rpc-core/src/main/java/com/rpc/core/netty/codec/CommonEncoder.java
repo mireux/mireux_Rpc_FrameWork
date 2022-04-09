@@ -1,4 +1,4 @@
-package com.rpc.core.codec;
+package com.rpc.core.netty.codec;
 
 
 import com.rpc.core.serializer.CommonSerializer;
