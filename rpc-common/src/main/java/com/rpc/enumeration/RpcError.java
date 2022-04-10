@@ -9,6 +9,8 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum RpcError {
+    UNKNOWN_ERROR("出现未知错误"),
+    SERVICE_SCAN_PACKAGE_NOT_FOUND("启动类AutoRegisterServiceScan注解注解缺失"),
     SERIALIZER_NOT_FOUND("找不到(反)序列化器"),
     SERVICE_INVOCATION_FAILURE("服务调用出现失败"),
     SERVICE_NOT_FOUND("找不到对应的服务"),

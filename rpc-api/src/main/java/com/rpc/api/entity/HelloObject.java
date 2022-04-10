@@ -1,4 +1,4 @@
-package com.rpc.api;
+package com.rpc.api.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

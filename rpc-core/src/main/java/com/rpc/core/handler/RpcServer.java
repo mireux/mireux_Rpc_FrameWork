@@ -2,7 +2,7 @@ package com.rpc.core.handler;
 
 public interface RpcServer {
 
-    <T> void publishService(T service, Class<T> serviceClass);
+    <T> void publishService(T service, String serviceName);
 
-    void start(int port);
+
 }

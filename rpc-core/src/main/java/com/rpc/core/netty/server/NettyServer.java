@@ -1,7 +1,7 @@
 package com.rpc.core.netty.server;
 
 import com.rpc.core.balancer.RoundRobinLoadBalancer;
-import com.rpc.core.handler.RpcServer;
+import com.rpc.core.handler.AbstractRpcServer;
 import com.rpc.core.netty.codec.CommonDecoder;
 import com.rpc.core.netty.codec.CommonEncoder;
 import com.rpc.core.provider.ServiceProvider;
@@ -10,8 +10,6 @@ import com.rpc.core.registry.NacosService;
 import com.rpc.core.registry.ServiceRegistry;
 import com.rpc.core.serializer.CommonSerializer;
 import com.rpc.core.serializer.JsonSerializer;
-import com.rpc.enumeration.RpcError;
-import com.rpc.exception.RpcException;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -25,10 +23,9 @@ import io.netty.handler.timeout.IdleStateHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.InetSocketAddress;
 import java.util.concurrent.TimeUnit;
 
-public class NettyServer implements RpcServer {
+public class NettyServer extends AbstractRpcServer {
 
     private static final Logger logger = LoggerFactory.getLogger(NettyServer.class);
     private final String host;
@@ -43,28 +40,10 @@ public class NettyServer implements RpcServer {
         this.port = port;
         serviceRegistry = new NacosService(new RoundRobinLoadBalancer());
         serviceProvider = new ServiceProviderImpl();
+        scanServices();
     }
 
-
-    /**
-     * 将服务保存到服务端本地注册表，同时注册到Nacos注册中心
-     * @param service 服务
-     * @param serviceClass 服务
-     * @param <T>
-     */
-    @Override
-    public <T> void publishService(T service, Class<T> serviceClass) {
-        if(serializer == null) {
-            logger.error("未设置序列化器");
-            throw new RpcException(RpcError.SERIALIZER_NOT_FOUND);
-        }
-        serviceProvider.addServiceProvider(service,serviceClass);
-        serviceRegistry.register(serviceClass.getCanonicalName(),new InetSocketAddress(host,port));
-        start(port);
-    }
-
-    @Override
-    public void start(int port) {
+    public void start() {
         // 处理连接的group
         NioEventLoopGroup boss = new NioEventLoopGroup();
         // 处理连接后续的group

@@ -5,21 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08b26fde-351f-40ae-a07f-91aa4ed31ce4" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/balancer/LoadBalancer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/balancer/RandomLoadBalancer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/balancer/RoundRobinLoadBalancer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-api/src/main/java/com/rpc/api/HelloServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-api/src/main/java/com/rpc/api/TestService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-api/src/main/java/com/rpc/api/TestServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/annotation/AutoRegisterService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/annotation/AutoRegisterServiceScan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/utils/ReflectUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/AbstractRpcServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-api/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-api/src/main/java/com/rpc/api/HelloObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-api/src/main/java/com/rpc/api/entity/HelloObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-api/src/main/java/com/rpc/api/HelloService.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-api/src/main/java/com/rpc/api/HelloService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-api/target/classes/com/rpc/api/HelloObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-api/target/classes/com/rpc/api/HelloService.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-api/target/classes/com/rpc/api/HelloService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/enumeration/RpcError.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/enumeration/RpcError.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-common/target/classes/com/rpc/enumeration/RpcError.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-common/target/classes/com/rpc/enumeration/RpcError.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/RpcClientProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/RpcClientProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/client/NettyClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/client/NettyClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/RpcServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/RpcServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/server/NettyServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/server/NettyServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/provider/ServiceProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/provider/ServiceProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/provider/ServiceProviderImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/provider/ServiceProviderImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/registry/NacosService.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/registry/NacosService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/client/ChannelProvider$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/client/ChannelProvider$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/client/ChannelProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/client/ChannelProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/client/NettyClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/client/NettyClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/client/NettyClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/client/NettyClientHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/server/NettyServer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/server/NettyServer$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/server/NettyServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/server/NettyServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/server/NettyServerHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/server/NettyServerHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/main/java/com/rpc/client/TestNettyClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/main/java/com/rpc/client/TestNettyClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/target/classes/com/rpc/client/TestNettyClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/target/classes/com/rpc/client/TestNettyClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-server/src/main/java/com/rpc/test/HelloServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-server/src/main/java/com/rpc/test/TestNettyServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/src/main/java/com/rpc/test/TestNettyServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-server/target/classes/com/rpc/test/HelloServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-server/target/classes/com/rpc/test/TestNettyServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/target/classes/com/rpc/test/TestNettyServer.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +44,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="AnnotationType" />
         <option value="Class" />
       </list>
     </option>
@@ -168,7 +183,7 @@
       <workItem from="1649421945031" duration="697000" />
       <workItem from="1649498101254" duration="2323000" />
       <workItem from="1649580358075" duration="1661000" />
-      <workItem from="1649582553062" duration="5593000" />
+      <workItem from="1649582553062" duration="16326000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1649163769169</created>
@@ -226,7 +241,21 @@
       <option name="project" value="LOCAL" />
       <updated>1649584214141</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="添加了两种负载均衡的策略：随机和轮询">
+      <created>1649591862796</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1649591862800</updated>
+    </task>
+    <task id="LOCAL-00010" summary="添加了两种负载均衡的策略：随机和轮询">
+      <created>1649592792138</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1649592792138</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,7 +281,8 @@
     <MESSAGE value="添加readme.md" />
     <MESSAGE value="加入Nacos服务注册中心" />
     <MESSAGE value="统一管理Netty客户端请求 Netty客户端的优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="统一管理Netty客户端请求 Netty客户端的优化" />
+    <MESSAGE value="添加了两种负载均衡的策略：随机和轮询" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加了两种负载均衡的策略：随机和轮询" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

@@ -43,8 +43,11 @@ public class NacosService implements ServiceRegistry, LookUpService {
     public InetSocketAddress getService(String serviceName) {
         try {
             List<Instance> AllService = NacosUtil.getAllInstance(namingService, serviceName);
-            //TODO 这里涉及到负载均衡策略，后面再优化，这里我们先选择第0个
 //            Instance instance = AllService.get(0);
+            if (AllService.size() == 0) {
+                logger.error("找不到对应服务：" + serviceName);
+                throw new RpcException(RpcError.SERVICE_NOT_FOUND);
+            }
             Instance instance = loadBalancer.select(AllService);
             return new InetSocketAddress(instance.getIp(), instance.getPort());
         } catch (NacosException e) {
