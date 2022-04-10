@@ -10,6 +10,7 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.timeout.IdleStateHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,7 +46,8 @@ public class ChannelProvider {
             protected void initChannel(SocketChannel socketChannel) throws Exception {
                 socketChannel.pipeline().addLast(new CommonEncoder(serializer))
                         .addLast(new CommonDecoder())
-                        .addLast(new NettyClientHandler());
+                        .addLast(new NettyClientHandler())
+                        .addLast(new IdleStateHandler(0,5,0,TimeUnit.SECONDS));
             }
         });
         //设置计数器值为1

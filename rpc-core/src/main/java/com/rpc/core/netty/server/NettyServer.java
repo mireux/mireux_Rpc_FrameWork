@@ -20,10 +20,12 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import io.netty.handler.timeout.IdleStateHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.net.InetSocketAddress;
+import java.util.concurrent.TimeUnit;
 
 public class NettyServer implements RpcServer {
 
@@ -80,10 +82,11 @@ public class NettyServer implements RpcServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            // 添加处理器 入站处理器为解码处理器 出站处理器为编码处理器
-                            socketChannel.pipeline().addLast(new CommonEncoder(new JsonSerializer())); // 编码处理器
-                            socketChannel.pipeline().addLast(new CommonDecoder()); // 解码处理器
-                            socketChannel.pipeline().addLast(new NettyServerHandler()); // RpcRequest处理器
+                            socketChannel.pipeline()
+                                    .addLast(new CommonEncoder(new JsonSerializer()))  // 编码处理器
+                                    .addLast(new CommonDecoder()) // 解码处理器
+                                    .addLast(new NettyServerHandler()) // RpcRequest处理器
+                                    .addLast(new IdleStateHandler(30,0,0, TimeUnit.SECONDS)); // 心跳处理
                         }
                     });
             ChannelFuture channelFuture = serverBootstrap.bind(port).sync();
