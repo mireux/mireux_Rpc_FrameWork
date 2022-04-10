@@ -8,7 +8,11 @@
 ## 2022.04.06
 两次commit，完成了基本架构，能通过netty实现具体服务的通讯
 
+## 2022.04.10
+Nacos注册中心整合完毕，添加了Netty的心跳机制
+
 
 ## TODO
-1. 整合Nacos 和 zookeeper 注册中心
+1. 整合 zookeeper 注册中心
 2. 添加更多(反)序列化器
+3. 优化Nacos
