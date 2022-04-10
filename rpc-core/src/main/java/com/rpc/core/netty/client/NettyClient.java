@@ -1,20 +1,20 @@
 package com.rpc.core.netty.client;
 
-import com.rpc.core.RpcClient;
+import com.rpc.core.handler.RpcClient;
 import com.rpc.core.registry.NacosService;
 import com.rpc.core.serializer.CommonSerializer;
 import com.rpc.entity.RpcRequest;
 import com.rpc.entity.RpcResponse;
 import com.rpc.enumeration.RpcError;
 import com.rpc.exception.RpcException;
-import com.rpc.utils.RpcMessageChecker;
+import com.rpc.factory.SingletonFactory;
 import io.netty.channel.Channel;
-import io.netty.util.AttributeKey;
+import io.netty.channel.ChannelFutureListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.net.InetSocketAddress;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.CompletableFuture;
 
 public class NettyClient implements RpcClient {
 
@@ -22,43 +22,45 @@ public class NettyClient implements RpcClient {
     private static final Logger logger = LoggerFactory.getLogger(NettyClient.class);
     private CommonSerializer serializer;
     private final NacosService nacosService;
+    private final UnprocessedRequests unprocessedRequests;
 
     public NettyClient() {
+        // 单例模式创建 unprocessedRequests
+        unprocessedRequests = (UnprocessedRequests) SingletonFactory.getInstance(UnprocessedRequests.class);
         nacosService = new NacosService();
     }
 
     @Override
-    public Object sendRequest(RpcRequest rpcRequest) {
+    public CompletableFuture<RpcResponse> sendRequest(RpcRequest rpcRequest) {
         if (serializer == null) {
             logger.error("未设置序列化器");
             throw new RpcException(RpcError.SERIALIZER_NOT_FOUND);
         }
-        //保证自定义实体类变量的原子性和共享性的线程安全，此处应用于rpcResponse
-        AtomicReference<Object> result = new AtomicReference<>(null);
+        CompletableFuture<RpcResponse> resultFuture = new CompletableFuture<>();
         try {
             InetSocketAddress inetSocketAddress = nacosService.getService(rpcRequest.getInterfaceName());
             Channel channel = ChannelProvider.get(inetSocketAddress, serializer);
-            if(channel.isActive()){
+            if (channel.isActive()) {
+                //将新请求放入未处理完的请求中
+                unprocessedRequests.put(rpcRequest.getRequestId(), resultFuture);
                 //向服务端发请求，并设置监听，关于writeAndFlush()的具体实现可以参考：https://blog.csdn.net/qq_34436819/article/details/103937188
-                channel.writeAndFlush(rpcRequest).addListener(future1 -> {
-                    if(future1.isSuccess()){
+                channel.writeAndFlush(rpcRequest).addListener((ChannelFutureListener) future1 -> {
+                    if (future1.isSuccess()) {
                         logger.info(String.format("客户端发送消息：%s", rpcRequest));
-                    }else {
+                    } else {
+                        future1.channel().close();
+                        resultFuture.completeExceptionally(future1.cause());
                         logger.error("发送消息时有错误发生:", future1.cause());
+
                     }
                 });
-                channel.closeFuture().sync();
-                //AttributeMap<AttributeKey, AttributeValue>是绑定在Channel上的，可以设置用来获取通道对象
-                AttributeKey<RpcResponse> key = AttributeKey.valueOf("rpcResponse" + rpcRequest.getRequestId());
-                //get()阻塞获取value
-                RpcResponse rpcResponse = channel.attr(key).get();
-                RpcMessageChecker.check(rpcRequest, rpcResponse);
-                 result.set(rpcResponse.getData());
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            //将请求从请求集合中移除
+            unprocessedRequests.remove(rpcRequest.getRequestId());
+            logger.error(e.getMessage(), e);
         }
-        return result.get();
+        return resultFuture;
     }
 
     public void setSerializer(CommonSerializer serializer) {

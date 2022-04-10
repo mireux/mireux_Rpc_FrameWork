@@ -2,11 +2,9 @@ package com.rpc.client;
 
 import com.rpc.api.HelloObject;
 import com.rpc.api.HelloService;
-import com.rpc.core.RpcClient;
-import com.rpc.core.RpcClientProxy;
+import com.rpc.core.handler.RpcClientProxy;
 import com.rpc.core.netty.client.NettyClient;
 import com.rpc.core.serializer.JsonSerializer;
-import com.rpc.entity.RpcResponse;
 
 public class TestNettyClient {
 

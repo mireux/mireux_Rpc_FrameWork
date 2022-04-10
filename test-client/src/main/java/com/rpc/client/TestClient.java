@@ -1,9 +1,5 @@
 package com.rpc.client;
 
-import com.rpc.api.HelloObject;
-import com.rpc.api.HelloService;
-import com.rpc.core.RpcClientProxy;
-
 public class TestClient {
     public static void main(String[] args) {
 //        //接口与代理对象之间的中介对象

@@ -1,4 +1,4 @@
-package com.rpc.core;
+package com.rpc.core.handler;
 
 public interface RpcServer {
 
