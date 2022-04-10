@@ -7,7 +7,7 @@ import com.rpc.core.serializer.KryoSerializer;
 public class TestNettyServer {
     public static void main(String[] args) {
         HelloService helloService = new HelloServiceImpl();
-        NettyServer server = new NettyServer("127.0.0.1", 9999);
+        NettyServer server = new NettyServer("127.0.0.1", 9998);
         server.setSerializer(new KryoSerializer());
         server.publishService(helloService,HelloService.class);
     }

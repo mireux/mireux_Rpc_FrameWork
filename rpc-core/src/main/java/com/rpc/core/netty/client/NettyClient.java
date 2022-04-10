@@ -1,5 +1,8 @@
 package com.rpc.core.netty.client;
 
+import com.rpc.core.balancer.LoadBalancer;
+import com.rpc.core.balancer.RandomLoadBalancer;
+import com.rpc.core.balancer.RoundRobinLoadBalancer;
 import com.rpc.core.handler.RpcClient;
 import com.rpc.core.registry.NacosService;
 import com.rpc.core.serializer.CommonSerializer;
@@ -16,6 +19,8 @@ import org.slf4j.LoggerFactory;
 import java.net.InetSocketAddress;
 import java.util.concurrent.CompletableFuture;
 
+import static com.rpc.core.serializer.CommonSerializer.DEFAULT_SERIALIZER;
+
 public class NettyClient implements RpcClient {
 
 
@@ -24,10 +29,26 @@ public class NettyClient implements RpcClient {
     private final NacosService nacosService;
     private final UnprocessedRequests unprocessedRequests;
 
+    // TODO 完成多个构造器的选择
     public NettyClient() {
-        // 单例模式创建 unprocessedRequests
+        //以默认序列化器调用构造函数
+        this(DEFAULT_SERIALIZER, new RandomLoadBalancer());
+    }
+
+    public NettyClient(LoadBalancer loadBalancer) {
+        this(DEFAULT_SERIALIZER, loadBalancer);
+    }
+
+    public NettyClient(Integer serializerCode) {
+        // TODO 先暂时写死 后续可以选择从配置文件中读取
+        this(serializerCode, new RoundRobinLoadBalancer());
+    }
+
+
+    public NettyClient(Integer serializerCode, LoadBalancer loadBalancer) {
+        nacosService = new NacosService(loadBalancer);
+        serializer = CommonSerializer.getByCode(serializerCode);
         unprocessedRequests = (UnprocessedRequests) SingletonFactory.getInstance(UnprocessedRequests.class);
-        nacosService = new NacosService();
     }
 
     @Override

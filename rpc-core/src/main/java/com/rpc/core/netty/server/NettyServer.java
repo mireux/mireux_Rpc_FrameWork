@@ -1,5 +1,6 @@
 package com.rpc.core.netty.server;
 
+import com.rpc.core.balancer.RoundRobinLoadBalancer;
 import com.rpc.core.handler.RpcServer;
 import com.rpc.core.netty.codec.CommonDecoder;
 import com.rpc.core.netty.codec.CommonEncoder;
@@ -40,7 +41,7 @@ public class NettyServer implements RpcServer {
     public NettyServer(String host, int port) {
         this.host = host;
         this.port = port;
-        serviceRegistry = new NacosService();
+        serviceRegistry = new NacosService(new RoundRobinLoadBalancer());
         serviceProvider = new ServiceProviderImpl();
     }
 

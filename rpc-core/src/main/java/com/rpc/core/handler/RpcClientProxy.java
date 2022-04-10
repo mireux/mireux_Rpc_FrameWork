@@ -3,6 +3,7 @@ package com.rpc.core.handler;
 import com.rpc.core.netty.client.NettyClient;
 import com.rpc.entity.RpcRequest;
 import com.rpc.entity.RpcResponse;
+import com.rpc.utils.RpcMessageChecker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,17 +34,18 @@ public class RpcClientProxy implements InvocationHandler {
         // 客户端向服务端发送消息
         logger.info("调用方法:{}#{}", method.getDeclaringClass().getName(), method.getName());
         RpcRequest rpcRequest = new RpcRequest(UUID.randomUUID().toString(), method.getDeclaringClass().getName(), method.getName(), args, method.getParameterTypes(), false);
-        Object result = null;
+        RpcResponse rpcResponse = null;
         if (client instanceof NettyClient) {
             // 异步获取调用结果
             CompletableFuture<RpcResponse> completableFuture = (CompletableFuture<RpcResponse>) client.sendRequest(rpcRequest);
             try {
-                result = completableFuture.get().getData();
+                rpcResponse = (RpcResponse) completableFuture.get();
             } catch (InterruptedException | ExecutionException e) {
                 logger.error("方法调用请求发送失败", e);
                 return null;
             }
         }
-        return result;
+        RpcMessageChecker.check(rpcRequest, rpcResponse);
+        return rpcResponse.getData();
     }
 }
