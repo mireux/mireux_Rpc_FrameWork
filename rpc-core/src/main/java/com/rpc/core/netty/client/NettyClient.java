@@ -29,7 +29,7 @@ public class NettyClient implements RpcClient {
     private final NacosService nacosService;
     private final UnprocessedRequests unprocessedRequests;
 
-    // TODO 完成多个构造器的选择
+    // 完成多个构造器的选择
     public NettyClient() {
         //以默认序列化器调用构造函数
         this(DEFAULT_SERIALIZER, new RandomLoadBalancer());

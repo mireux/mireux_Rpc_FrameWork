@@ -4,12 +4,9 @@ import com.rpc.core.balancer.RoundRobinLoadBalancer;
 import com.rpc.core.handler.AbstractRpcServer;
 import com.rpc.core.netty.codec.CommonDecoder;
 import com.rpc.core.netty.codec.CommonEncoder;
-import com.rpc.core.provider.ServiceProvider;
 import com.rpc.core.provider.ServiceProviderImpl;
 import com.rpc.core.registry.NacosService;
-import com.rpc.core.registry.ServiceRegistry;
 import com.rpc.core.serializer.CommonSerializer;
-import com.rpc.core.serializer.JsonSerializer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -25,21 +22,25 @@ import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 
+
 public class NettyServer extends AbstractRpcServer {
 
     private static final Logger logger = LoggerFactory.getLogger(NettyServer.class);
-    private final String host;
     private final int port;
-    private CommonSerializer serializer;
-    private final ServiceRegistry serviceRegistry;
-    private final ServiceProvider serviceProvider;
+    private final CommonSerializer serializer;
 
 
     public NettyServer(String host, int port) {
+        this(host, port, DEFAULT_SERIALIZER);
+    }
+
+    public NettyServer(String host, int port, Integer serializerCode) {
         this.host = host;
         this.port = port;
         serviceRegistry = new NacosService(new RoundRobinLoadBalancer());
         serviceProvider = new ServiceProviderImpl();
+        serializer = CommonSerializer.getByCode(serializerCode);
+        //自动注册服务
         scanServices();
     }
 
@@ -63,7 +64,7 @@ public class NettyServer extends AbstractRpcServer {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
                             socketChannel.pipeline()
-                                    .addLast(new CommonEncoder(new JsonSerializer()))  // 编码处理器
+                                    .addLast(new CommonEncoder(serializer))  // 编码处理器
                                     .addLast(new CommonDecoder()) // 解码处理器
                                     .addLast(new NettyServerHandler()) // RpcRequest处理器
                                     .addLast(new IdleStateHandler(30,0,0, TimeUnit.SECONDS)); // 心跳处理
@@ -81,7 +82,4 @@ public class NettyServer extends AbstractRpcServer {
         }
     }
 
-    public void setSerializer(CommonSerializer serializer) {
-        this.serializer = serializer;
-    }
 }

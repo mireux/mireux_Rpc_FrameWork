@@ -31,7 +31,7 @@ public class ServiceProviderImpl implements ServiceProvider {
         }
         registeredService.add(serviceName);
         serviceMap.put(serviceName, service);
-        logger.info("向接口:{} 注册服务:{}", serviceName, serviceName);
+        logger.info("向接口:{} 注册服务:{}", serviceName, service);
     }
 
     /**

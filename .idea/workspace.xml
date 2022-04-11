@@ -5,35 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08b26fde-351f-40ae-a07f-91aa4ed31ce4" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/rpc-api/src/main/java/com/rpc/api/HelloServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-api/src/main/java/com/rpc/api/TestService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-api/src/main/java/com/rpc/api/TestServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/annotation/AutoRegisterService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/annotation/AutoRegisterServiceScan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/utils/ReflectUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/AbstractRpcServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-api/src/main/java/com/rpc/api/HelloObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-api/src/main/java/com/rpc/api/entity/HelloObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-api/src/main/java/com/rpc/api/HelloService.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-api/src/main/java/com/rpc/api/HelloService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-api/target/classes/com/rpc/api/HelloObject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-api/target/classes/com/rpc/api/HelloService.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-api/target/classes/com/rpc/api/HelloService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/enumeration/RpcError.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/enumeration/RpcError.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-common/target/classes/com/rpc/enumeration/RpcError.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-common/target/classes/com/rpc/enumeration/RpcError.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/RpcClientProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/RpcClientProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-api/src/main/java/com/rpc/api/HelloServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/src/main/java/com/rpc/test/HelloServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-api/src/main/java/com/rpc/api/TestServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/src/main/java/com/rpc/test/TestServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/AbstractRpcServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/AbstractRpcServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/RpcServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/RpcServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/client/NettyClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/client/NettyClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/codec/CommonDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/codec/CommonDecoder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/server/NettyServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/server/NettyServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/provider/ServiceProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/provider/ServiceProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/provider/ServiceProviderImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/provider/ServiceProviderImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/registry/NacosService.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/registry/NacosService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/server/NettyServer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/server/NettyServer$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/server/NettyServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/server/NettyServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-client/src/main/java/com/rpc/client/TestNettyClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/main/java/com/rpc/client/TestNettyClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-client/target/classes/com/rpc/client/TestNettyClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/target/classes/com/rpc/client/TestNettyClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-server/src/main/java/com/rpc/test/HelloServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-server/src/main/java/com/rpc/test/TestNettyServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/src/main/java/com/rpc/test/TestNettyServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-server/target/classes/com/rpc/test/HelloServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-server/target/classes/com/rpc/test/TestNettyServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/target/classes/com/rpc/test/TestNettyServer.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +65,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TODO_SCOPE" value="所有位置" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test-server" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Panda-Rpc-Framework" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="问题" />
     <property name="project.structure.proportion" value="0.0" />
@@ -184,6 +168,7 @@
       <workItem from="1649498101254" duration="2323000" />
       <workItem from="1649580358075" duration="1661000" />
       <workItem from="1649582553062" duration="16326000" />
+      <workItem from="1649639007754" duration="6625000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1649163769169</created>
@@ -294,6 +279,26 @@
           <url>file://$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/entity/RpcResponse.java</url>
           <line>33</line>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test-server/src/main/java/com/rpc/test/TestNettyServer.java</url>
+          <line>8</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/AbstractRpcServer.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/RpcClientProxy.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test-client/src/main/java/com/rpc/client/TestNettyClient.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

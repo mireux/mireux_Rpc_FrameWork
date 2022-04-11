@@ -1,7 +1,6 @@
 package com.rpc.client;
 
 import com.rpc.api.HelloService;
-import com.rpc.api.TestServiceImpl;
 import com.rpc.api.entity.HelloObject;
 import com.rpc.core.handler.RpcClientProxy;
 import com.rpc.core.netty.client.NettyClient;
@@ -17,8 +16,8 @@ public class TestNettyClient {
         HelloObject object = new HelloObject(12, "this is netty style");
         String res = helloService.hello(object);
         System.out.println(res);
-        TestServiceImpl testService = new TestServiceImpl();
-        testService.test("这是netty提供的服务");
+//        TestService testService = rpcClientProxy.getProxy(TestService.class);
+//        testService.test("这是netty提供的服务");
 
     }
 }

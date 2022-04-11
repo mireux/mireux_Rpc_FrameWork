@@ -29,26 +29,27 @@ public class CommonDecoder extends ReplayingDecoder {
     private static final Logger logger = LoggerFactory.getLogger(CommonDecoder.class);
     private static final int MAGIC_NUMBER = 0xCAFEBABE;
 
+
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
         int magicNumber = in.readInt();
-        if(magicNumber != MAGIC_NUMBER) {
+        if (magicNumber != MAGIC_NUMBER) {
             logger.error("不识别的协议包：{}", magicNumber);
             throw new RpcException(RpcError.UNKNOWN_PROTOCOL);
         }
         int packageType = in.readInt();
         Class<?> packageClass;
-        if(packageType == PackageType.REQUEST_PACK.getCode()){
+        if (packageType == PackageType.REQUEST_PACK.getCode()) {
             packageClass = RpcRequest.class;
-        }else if (packageType == PackageType.RESPONSE_PACK.getCode()){
+        } else if (packageType == PackageType.RESPONSE_PACK.getCode()) {
             packageClass = RpcResponse.class;
-        }else {
+        } else {
             logger.error("不识别的数据包：{}", packageType);
             throw new RpcException(RpcError.UNKNOWN_PACKAGE_TYPE);
         }
         int serializerCode = in.readInt();
         CommonSerializer serializer = CommonSerializer.getByCode(serializerCode);
-        if(serializer == null){
+        if (serializer == null) {
             logger.error("不识别的反序列化器：{}", serializerCode);
             throw new RpcException(RpcError.UNKNOWN_SERIALIZER);
         }

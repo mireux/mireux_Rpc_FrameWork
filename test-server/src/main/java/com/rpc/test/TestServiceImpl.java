@@ -1,7 +1,8 @@
-package com.rpc.api;
+package com.rpc.test;
 
 
 import com.rpc.annotation.AutoRegisterService;
+import com.rpc.api.TestService;
 
 @AutoRegisterService
 public class TestServiceImpl implements TestService {

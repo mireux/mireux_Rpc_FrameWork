@@ -1,6 +1,7 @@
-package com.rpc.api;
+package com.rpc.test;
 
 import com.rpc.annotation.AutoRegisterService;
+import com.rpc.api.HelloService;
 import com.rpc.api.entity.HelloObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

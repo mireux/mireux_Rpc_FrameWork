@@ -17,7 +17,7 @@ import java.util.Set;
 /**
  * 扫描服务类并进行服务注册
  */
-public class AbstractRpcServer implements RpcServer {
+public abstract class AbstractRpcServer implements RpcServer {
 
     protected Logger logger = LoggerFactory.getLogger(AbstractRpcServer.class);
 
@@ -60,6 +60,7 @@ public class AbstractRpcServer implements RpcServer {
                 try {
                     // 创建Impl类的实例
                     obj = clazz.getDeclaredConstructor().newInstance();
+                    System.out.println("obj = " + obj);
                 } catch (InvocationTargetException | InstantiationException | IllegalAccessException | NoSuchMethodException e) {
                     logger.error("创建" + clazz + "时有错误发生");
                     continue;
@@ -80,6 +81,8 @@ public class AbstractRpcServer implements RpcServer {
 
     @Override
     public <T> void publishService(T service, String serviceName) {
+        System.out.println("service = " + service);
+        System.out.println("serviceName = " + serviceName);
         serviceProvider.addServiceProvider(service, serviceName);
         serviceRegistry.register(serviceName, new InetSocketAddress(host, port));
     }
