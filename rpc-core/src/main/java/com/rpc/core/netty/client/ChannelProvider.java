@@ -78,6 +78,7 @@ public class ChannelProvider {
 //    }
 
     private static Channel connect(InetSocketAddress inetSocketAddress) throws ExecutionException, InterruptedException {
+        System.out.println("inetSocketAddress = " + inetSocketAddress);
         CompletableFuture<Channel> completableFuture = new CompletableFuture<>();
         ChannelProvider.bootstrap.connect(inetSocketAddress).addListener((ChannelFutureListener) future -> {
             if (future.isSuccess()) {

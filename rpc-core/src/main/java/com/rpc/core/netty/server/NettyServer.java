@@ -17,16 +17,12 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.timeout.IdleStateHandler;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 
 
 public class NettyServer extends AbstractRpcServer {
 
-    private static final Logger logger = LoggerFactory.getLogger(NettyServer.class);
-    private final int port;
     private final CommonSerializer serializer;
 
 
