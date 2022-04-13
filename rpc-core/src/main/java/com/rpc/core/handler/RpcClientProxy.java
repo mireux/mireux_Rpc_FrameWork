@@ -24,7 +24,6 @@ public class RpcClientProxy implements InvocationHandler {
     }
 
     public <T> T getProxy(Class<T> clazz) {
-        System.out.println("clazz = " + clazz);
         // 创建代理对象
         return (T) Proxy.newProxyInstance(clazz.getClassLoader(), new Class[]{clazz}, this);
     }
