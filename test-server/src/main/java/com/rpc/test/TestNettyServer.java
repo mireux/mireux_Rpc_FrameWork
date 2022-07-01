@@ -1,17 +1,40 @@
 package com.rpc.test;
 
-import com.alibaba.nacos.api.exception.NacosException;
 import com.rpc.annotation.AutoRegisterServiceScan;
 import com.rpc.core.netty.server.NettyServer;
 import com.rpc.utils.ConfigUtil;
 
+import java.util.Properties;
+
+import static com.rpc.core.registry.ServiceRegistry.NACOS_REGISTER;
+import static com.rpc.core.registry.ServiceRegistry.ZOOKEEPER_REGISTER;
+
 @AutoRegisterServiceScan
 public class TestNettyServer {
-    public static void main(String[] args) throws NacosException {
-        ConfigUtil.getConfigByNacos("localhost", "mireux.rpc.server", "DEFAULT_GROUP");
-        String host = ConfigUtil.getConfig("mireux.rpc.server", "server.host");
-        System.out.println(host);
-        NettyServer server = new NettyServer("127.0.0.1", 9999);
+
+//    @AutoValue(applicationName = "mireux.rpc.server",configKey = "server.host")
+
+    public static void main(String[] args) throws Exception {
+        // 获取配置文件 获取对应的注册中心
+        String host = null;
+        String port = null;
+        Integer register = null;
+        Properties propertiesConfig = ConfigUtil.getPropertiesConfig(TestNettyServer.class);
+        String registry = (String) propertiesConfig.get("registry");
+        if (registry.equals("nacos")) {
+            ConfigUtil.getConfigByNacos("localhost", "mireux.rpc.server", "DEFAULT_GROUP");
+            host = ConfigUtil.getConfig("mireux.rpc.server", "server.host");
+            port = ConfigUtil.getConfig("mireux.rpc.server", "server.port");
+            register = NACOS_REGISTER;
+        } else if (registry.equals("zookeeper")) {
+            host = (String) propertiesConfig.get("server.host");
+            port = (String) propertiesConfig.get("server.port");
+            register = ZOOKEEPER_REGISTER;
+        }
+        assert port != null;
+        NettyServer server = new NettyServer(host, Integer.parseInt(port), register);
+
         server.start();
     }
+
 }

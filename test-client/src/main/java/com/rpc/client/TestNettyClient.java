@@ -6,11 +6,25 @@ import com.rpc.api.entity.HelloObject;
 import com.rpc.core.handler.RpcClientProxy;
 import com.rpc.core.netty.client.NettyClient;
 import com.rpc.core.serializer.JsonSerializer;
+import com.rpc.utils.ConfigUtil;
+
+import java.util.Properties;
+
+import static com.rpc.core.registry.ServiceRegistry.NACOS_REGISTER;
+import static com.rpc.core.registry.ServiceRegistry.ZOOKEEPER_REGISTER;
 
 public class TestNettyClient {
 
     public static void main(String[] args) {
-        NettyClient nettyClient = new NettyClient();
+        Integer register = null;
+        Properties propertiesConfig = ConfigUtil.getPropertiesConfig(TestNettyClient.class);
+        String registry = (String) propertiesConfig.get("registry");
+        if (registry.equals("nacos")) {
+            register = NACOS_REGISTER;
+        } else if (registry.equals("zookeeper")) {
+            register = ZOOKEEPER_REGISTER;
+        }
+        NettyClient nettyClient = new NettyClient(0, register);
         nettyClient.setSerializer(new JsonSerializer());
         RpcClientProxy rpcClientProxy = new RpcClientProxy(nettyClient);
         HelloService helloService = rpcClientProxy.getProxy(HelloService.class);
@@ -18,7 +32,6 @@ public class TestNettyClient {
         String res = helloService.hello(object);
         System.out.println(res);
         TestService testService = rpcClientProxy.getProxy(TestService.class);
-        res = testService.test("这是netty提供的服务");
-        System.out.println("res = " + res);
+        testService.test("这是netty提供的服务");
     }
 }

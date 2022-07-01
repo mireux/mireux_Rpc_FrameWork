@@ -4,7 +4,7 @@ import com.rpc.core.balancer.LoadBalancer;
 import com.rpc.core.balancer.RandomLoadBalancer;
 import com.rpc.core.balancer.RoundRobinLoadBalancer;
 import com.rpc.core.handler.RpcClient;
-import com.rpc.core.registry.NacosService;
+import com.rpc.core.registry.LookUpService;
 import com.rpc.core.serializer.CommonSerializer;
 import com.rpc.entity.RpcRequest;
 import com.rpc.entity.RpcResponse;
@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 import java.net.InetSocketAddress;
 import java.util.concurrent.CompletableFuture;
 
+import static com.rpc.core.registry.ServiceRegistry.NACOS_REGISTER;
 import static com.rpc.core.serializer.CommonSerializer.DEFAULT_SERIALIZER;
 
 public class NettyClient implements RpcClient {
@@ -26,27 +27,32 @@ public class NettyClient implements RpcClient {
 
     private static final Logger logger = LoggerFactory.getLogger(NettyClient.class);
     private CommonSerializer serializer;
-    private final NacosService nacosService;
+
+    private final LookUpService lookUpService;
     private final UnprocessedRequests unprocessedRequests;
 
     // 完成多个构造器的选择
     public NettyClient() {
         //以默认序列化器调用构造函数
-        this(DEFAULT_SERIALIZER, new RandomLoadBalancer());
+        this(DEFAULT_SERIALIZER, NACOS_REGISTER, new RandomLoadBalancer());
     }
 
     public NettyClient(LoadBalancer loadBalancer) {
         this(DEFAULT_SERIALIZER, loadBalancer);
     }
 
-    public NettyClient(Integer serializerCode) {
+    public NettyClient(Integer serializerCode, Integer registryCode) {
         // TODO 先暂时写死 后续可以选择从配置文件中读取
-        this(serializerCode, new RoundRobinLoadBalancer());
+        this(serializerCode, registryCode, new RoundRobinLoadBalancer());
     }
 
 
     public NettyClient(Integer serializerCode, LoadBalancer loadBalancer) {
-        nacosService = new NacosService(loadBalancer);
+        this(serializerCode, NACOS_REGISTER, new RoundRobinLoadBalancer());
+    }
+
+    public NettyClient(Integer serializerCode, Integer registryCode, LoadBalancer loadBalancer) {
+        lookUpService = LookUpService.getRegistry(registryCode);
         serializer = CommonSerializer.getByCode(serializerCode);
         unprocessedRequests = (UnprocessedRequests) SingletonFactory.getInstance(UnprocessedRequests.class);
     }
@@ -59,7 +65,7 @@ public class NettyClient implements RpcClient {
         }
         CompletableFuture<RpcResponse> resultFuture = new CompletableFuture<>();
         try {
-            InetSocketAddress inetSocketAddress = nacosService.getService(rpcRequest.getInterfaceName());
+            InetSocketAddress inetSocketAddress = lookUpService.getService(rpcRequest.getInterfaceName());
             Channel channel = ChannelProvider.get(inetSocketAddress, serializer);
             if (channel.isActive()) {
                 //将新请求放入未处理完的请求中

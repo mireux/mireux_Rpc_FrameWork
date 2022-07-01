@@ -4,20 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08b26fde-351f-40ae-a07f-91aa4ed31ce4" name="变更" comment="bug修复">
-      <change afterPath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/utils/ConfigUtil.java" afterDir="false" />
+    <list default="true" id="08b26fde-351f-40ae-a07f-91aa4ed31ce4" name="变更" comment="update readme.md">
+      <change afterPath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/utils/SerializeUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/registry/zookeeper/ZookeeperInstance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/registry/zookeeper/ZookeeperService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/serializer/ProtobufSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-client/src/main/resources/config.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-server/src/main/resources/config.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-server/src/test/java/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/enumeration/RpcError.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/enumeration/RpcError.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-common/target/classes/com/rpc/enumeration/RpcError.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-common/target/classes/com/rpc/enumeration/RpcError.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/AbstractRpcServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/AbstractRpcServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/RpcClientProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/RpcClientProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/enumeration/SerializerCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/enumeration/SerializerCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/utils/ConfigUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/utils/ConfigUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-common/target/classes/com/rpc/enumeration/SerializerCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-common/target/classes/com/rpc/enumeration/SerializerCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/RpcServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/handler/RpcServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/client/NettyClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/client/NettyClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/client/NettyClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/client/NettyClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/server/NettyServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/server/NettyServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/registry/LookUpService.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/registry/LookUpService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/registry/ServiceRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/registry/ServiceRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/client/NettyClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/client/NettyClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/client/NettyClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/client/NettyClientHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/server/NettyServer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/server/NettyServer$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/server/NettyServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/netty/server/NettyServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/registry/ServiceRegistry.class" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/target/classes/com/rpc/core/registry/ServiceRegistry.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/src/main/java/com/rpc/client/TestNettyClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/src/main/java/com/rpc/client/TestNettyClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-client/target/classes/com/rpc/client/TestNettyClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/test-client/target/classes/com/rpc/client/TestNettyClient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-server/src/main/java/com/rpc/test/HelloServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/src/main/java/com/rpc/test/HelloServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test-server/src/main/java/com/rpc/test/TestNettyServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/src/main/java/com/rpc/test/TestNettyServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-server/src/main/java/com/rpc/test/TestServer.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/test-server/target/classes/com/rpc/test/TestNettyServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/test-server/target/classes/com/rpc/test/TestNettyServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-server/target/classes/com/rpc/test/TestServer.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +45,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="AnnotationType" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -58,37 +76,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="TODO_SCOPE" value="所有位置" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test-server" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="模块" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "OverrideImplement.combined": "false",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/mireux/IdeaProjects/mireux_RPC_Framework/test-client/src/main/resources",
+    "project.structure.last.edited": "问题",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.rpc.core.netty.client" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test-client/src/main/resources" />
       <recent name="C:\Users\S6\Desktop\mireux_Rpc_FrameWork\test-server" />
       <recent name="C:\Users\S6\Desktop\mireux_Rpc_FrameWork\test-client" />
       <recent name="C:\Users\S6\Desktop\mireux_Rpc_FrameWork\rpc-core" />
       <recent name="C:\Users\S6\Desktop\mireux_Rpc_FrameWork\rpc-common" />
-      <recent name="$PROJECT_DIR$/rpc-common/src/main/java/com/rpc" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\S6\Desktop\mireux_Rpc_FrameWork\rpc-api" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.TestNettyServer">
+  <component name="RunManager" selected="应用程序.TestNettyClient">
     <configuration name="TestClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rpc.client.TestClient" />
       <module name="test-client" />
@@ -128,12 +141,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rpc.test.TestServer" />
-      <module name="test-server" />
+    <configuration name="com.rpc.core.registry.test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rpc.core.registry.test" />
+      <module name="rpc-core" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.rpc.test.*" />
+          <option name="PATTERN" value="com.rpc.core.registry.zookeeper.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -142,25 +155,19 @@
       </method>
     </configuration>
     <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rpc.core.registry.test" />
-      <module name="rpc-core" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.rpc.core.registry.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <option name="MAIN_CLASS_NAME" value="test" />
+      <module name="test-server" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.TestNettyClient" />
         <item itemvalue="应用程序.TestNettyServer" />
         <item itemvalue="应用程序.test" />
-        <item itemvalue="应用程序.TestNettyClient" />
+        <item itemvalue="应用程序.com.rpc.core.registry.test" />
         <item itemvalue="应用程序.TestClient" />
-        <item itemvalue="应用程序.TestServer" />
       </list>
     </recent_temporary>
   </component>
@@ -183,7 +190,23 @@
       <workItem from="1649580358075" duration="1661000" />
       <workItem from="1649582553062" duration="16326000" />
       <workItem from="1649736264920" duration="6333000" />
-      <workItem from="1649848210907" duration="2513000" />
+      <workItem from="1649848210907" duration="8661000" />
+      <workItem from="1650012166662" duration="598000" />
+      <workItem from="1650692336084" duration="2735000" />
+      <workItem from="1652153513296" duration="825000" />
+      <workItem from="1654055142513" duration="1011000" />
+      <workItem from="1654133800546" duration="3270000" />
+      <workItem from="1654244683779" duration="41000" />
+      <workItem from="1654335896846" duration="496000" />
+      <workItem from="1654584791701" duration="2067000" />
+      <workItem from="1654588234999" duration="772000" />
+      <workItem from="1654592709404" duration="628000" />
+      <workItem from="1654739398245" duration="597000" />
+      <workItem from="1654744154135" duration="21000" />
+      <workItem from="1655115823345" duration="2509000" />
+      <workItem from="1655712054857" duration="492000" />
+      <workItem from="1655712562041" duration="597000" />
+      <workItem from="1656317591259" duration="10123000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1649163769169</created>
@@ -262,7 +285,21 @@
       <option name="project" value="LOCAL" />
       <updated>1649649594511</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="简单添加Nacos配置中心">
+      <created>1649851201447</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1649851201447</updated>
+    </task>
+    <task id="LOCAL-00013" summary="update readme.md">
+      <created>1649857243779</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1649857243779</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,7 +327,9 @@
     <MESSAGE value="统一管理Netty客户端请求 Netty客户端的优化" />
     <MESSAGE value="添加了两种负载均衡的策略：随机和轮询" />
     <MESSAGE value="bug修复" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug修复" />
+    <MESSAGE value="简单添加Nacos配置中心" />
+    <MESSAGE value="update readme.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="update readme.md" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -298,31 +337,41 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/entity/RpcResponse.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/registry/NacosService.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/utils/ConfigUtil.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/rpc-common/src/main/java/com/rpc/utils/ConfigUtil.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
         <breakpoint type="java-exception">
           <properties class="java.lang.IllegalStateException" package="java.lang" />
           <option name="timeStamp" value="10" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test-server/src/main/java/com/rpc/test/TestNettyServer.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/server/NettyServer.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test-server/src/main/java/com/rpc/test/TestNettyServer.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test-client/src/main/java/com/rpc/client/TestNettyClient.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/rpc-core/src/main/java/com/rpc/core/netty/client/NettyClient.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/mireux_RPC_Framework$TestNettyServer.ic" NAME="TestNettyServer 覆盖结果" MODIFIED="1656560743173" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.rpc.test.*</FILTER>
+    </SUITE>
   </component>
 </project>

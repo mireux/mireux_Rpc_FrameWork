@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.net.InetSocketAddress;
+import java.util.Objects;
 
 /**
  * 客户端Netty处理器
@@ -50,7 +51,7 @@ public class NettyClientHandler extends SimpleChannelInboundHandler<RpcResponse>
             if (state == IdleState.WRITER_IDLE) {
                 logger.info("发送心跳包[{}]", ctx.channel().remoteAddress());
                 Channel channel = ChannelProvider.get((InetSocketAddress) ctx.channel().remoteAddress()
-                        , CommonSerializer.getByCode(CommonSerializer.DEFAULT_SERIALIZER));
+                        , Objects.requireNonNull(CommonSerializer.getByCode(CommonSerializer.DEFAULT_SERIALIZER)));
                 RpcRequest rpcRequest = new RpcRequest();
                 rpcRequest.setHeartBeat(true);
                 //设置一个Listener监测服务端是否接收到心跳包，如果接收到就代表对方在线，不用关闭Channel

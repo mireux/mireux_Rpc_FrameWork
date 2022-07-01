@@ -7,6 +7,8 @@ import com.alibaba.nacos.api.config.listener.Listener;
 import com.alibaba.nacos.api.exception.NacosException;
 import com.rpc.exception.RpcException;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
 import java.util.concurrent.Executor;
 
@@ -20,6 +22,9 @@ public class ConfigUtil {
         这里我们暂时将dataId作为依据
     */
     public static Map<String, Map<String, String>> groupMap = new HashMap<>();
+
+    private static final Properties configProperties = new Properties();
+    public static InputStream is;
 
     /**
      * 获取到对应的配置信息
@@ -72,4 +77,28 @@ public class ConfigUtil {
         }
         return configMap.get(configKey);
     }
+
+    public static <T> Properties getPropertiesConfig(Class<T> clazz) {
+        if (configProperties.isEmpty()) {
+            is = clazz.getResourceAsStream("/config.properties");
+            Set<Map.Entry<Object, Object>> entries;
+            try {
+                configProperties.load(is);
+                entries = configProperties.entrySet();
+//            for (Map.Entry<Object, Object> entry : entries) {
+//
+//                String value = (String) entry.getValue();
+//                value = URLEncoder.encode(value, StandardCharsets.ISO_8859_1);
+//                value = URLDecoder.decode(value, "GBK");
+//
+//                System.out.println(entry.getKey() + "------" + value);
+//            }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return configProperties;
+    }
+
+
 }

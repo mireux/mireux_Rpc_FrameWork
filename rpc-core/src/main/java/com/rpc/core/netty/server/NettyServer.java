@@ -1,11 +1,10 @@
 package com.rpc.core.netty.server;
 
-import com.rpc.core.balancer.RoundRobinLoadBalancer;
 import com.rpc.core.handler.AbstractRpcServer;
 import com.rpc.core.netty.codec.CommonDecoder;
 import com.rpc.core.netty.codec.CommonEncoder;
 import com.rpc.core.provider.ServiceProviderImpl;
-import com.rpc.core.registry.NacosService;
+import com.rpc.core.registry.ServiceRegistry;
 import com.rpc.core.serializer.CommonSerializer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -27,13 +26,18 @@ public class NettyServer extends AbstractRpcServer {
 
 
     public NettyServer(String host, int port) {
-        this(host, port, DEFAULT_SERIALIZER);
+        this(host, port, DEFAULT_SERIALIZER, DEFAULT_REGISTRY);
     }
 
-    public NettyServer(String host, int port, Integer serializerCode) {
+    public NettyServer(String host, int port, Integer registryCode) {
+        this(host, port, DEFAULT_SERIALIZER, registryCode);
+    }
+
+    public NettyServer(String host, int port, Integer serializerCode, Integer registryCode) {
         this.host = host;
         this.port = port;
-        serviceRegistry = new NacosService(new RoundRobinLoadBalancer());
+//        serviceRegistry = new NacosService(new RoundRobinLoadBalancer());
+        serviceRegistry = ServiceRegistry.getRegistry(registryCode);
         serviceProvider = new ServiceProviderImpl();
         serializer = CommonSerializer.getByCode(serializerCode);
         //自动注册服务
