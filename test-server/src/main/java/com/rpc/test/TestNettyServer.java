@@ -8,6 +8,7 @@ import java.util.Properties;
 
 import static com.rpc.core.registry.ServiceRegistry.NACOS_REGISTER;
 import static com.rpc.core.registry.ServiceRegistry.ZOOKEEPER_REGISTER;
+import static com.rpc.core.serializer.CommonSerializer.*;
 
 @AutoRegisterServiceScan
 public class TestNettyServer {
@@ -19,6 +20,7 @@ public class TestNettyServer {
         String host = null;
         String port = null;
         Integer register = null;
+        Integer serializerCode = null;
         Properties propertiesConfig = ConfigUtil.getPropertiesConfig(TestNettyServer.class);
         String registry = (String) propertiesConfig.get("registry");
         if (registry.equals("nacos")) {
@@ -31,8 +33,21 @@ public class TestNettyServer {
             port = (String) propertiesConfig.get("server.port");
             register = ZOOKEEPER_REGISTER;
         }
+
         assert port != null;
-        NettyServer server = new NettyServer(host, Integer.parseInt(port), register);
+        String serializer = (String) propertiesConfig.get("serializer");
+        switch (serializer) {
+            case "json":
+                serializerCode = JSON_SERIALIZER;
+                break;
+            case "kryo":
+                serializerCode = KRYO_SERIALIZER;
+                break;
+            case "protostuff":
+                serializerCode = PROTOSTUFF_SERIALIZER;
+                break;
+        }
+        NettyServer server = new NettyServer(host, Integer.parseInt(port), serializerCode, register);
 
         server.start();
     }

@@ -40,6 +40,7 @@ public class NettyServer extends AbstractRpcServer {
         serviceRegistry = ServiceRegistry.getRegistry(registryCode);
         serviceProvider = new ServiceProviderImpl();
         serializer = CommonSerializer.getByCode(serializerCode);
+        logger.info("当前的注册中心是:{},当前的序列化器是:{}", registryCode, serializerCode);
         //自动注册服务
         scanServices();
     }

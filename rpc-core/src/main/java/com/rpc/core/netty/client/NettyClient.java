@@ -42,7 +42,6 @@ public class NettyClient implements RpcClient {
     }
 
     public NettyClient(Integer serializerCode, Integer registryCode) {
-        // TODO 先暂时写死 后续可以选择从配置文件中读取
         this(serializerCode, registryCode, new RoundRobinLoadBalancer());
     }
 
@@ -55,6 +54,7 @@ public class NettyClient implements RpcClient {
         lookUpService = LookUpService.getRegistry(registryCode);
         serializer = CommonSerializer.getByCode(serializerCode);
         unprocessedRequests = (UnprocessedRequests) SingletonFactory.getInstance(UnprocessedRequests.class);
+        logger.info("当前的注册中心是:{},当前的序列化器是:{}", registryCode, serializerCode);
     }
 
     @Override
